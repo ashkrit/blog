@@ -34,14 +34,7 @@ public class SeqLock implements ReadWriteLock{
 		ReentrantLock innerLock = new ReentrantLock();
 		@Override
 		public void lock() {
-			/*
-			while(true)
-			{
-				long value = counter.get();
-				if(value%2==1) continue;
-				if(counter.compareAndSet(value, value+1)) break;
-			}
-			*/
+			
 			innerLock.lock();
 			counter.incrementAndGet();
 		}
