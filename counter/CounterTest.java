@@ -1,3 +1,5 @@
+package playground.counter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +19,7 @@ public class CounterTest {
 		ExecutorService es = Executors.newFixedThreadPool(noOfThreads);
 
 		Counter[] counters = new Counter[] { new AtomicCounter(),
-				new CoreBasedCounter(), new CoreBasedExtraSlotCounter(), new ThreadBasedCounter(noOfThreads) };
+				new CoreBasedCounter(), new CoreBasedExtraSlotCounter(), new ThreadBasedCounter(noOfThreads), new PaddedAtomicCounter() };
 
 		for (Counter counter : counters) {
 			List<Future<Long[]>> ftList = new ArrayList<>();
@@ -41,7 +43,7 @@ public class CounterTest {
 							.format("[%s] No Of Thread: %s , Min:%s ms , Max: %s ms , Avg: %s ms, Fail CAS: %s ",
 									counter.getClass().getSimpleName() , noOfThreads, Collections.min(timeTaken),
 									Collections.max(timeTaken), sum
-											/ noOfThreads, failCount));
+											/ noOfThreads, failCount) );
 		}
 
 		es.shutdownNow();
