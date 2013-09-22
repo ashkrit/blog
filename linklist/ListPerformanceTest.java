@@ -7,7 +7,7 @@ public class ListPerformanceTest {
 
 	public static void main(String[] args) {
 
-		int items = 100000 * 10 * 10;
+		int items = 100000 * 10 * 25;
 		int warmUp = 5;
 
 		for (int x = 0; x < warmUp; x++) {
