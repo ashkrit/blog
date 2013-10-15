@@ -18,7 +18,7 @@ public class ParkWaitStrategy implements WaitStrategy {
 		for(int index=0;index<consumer;index++)
 		{
 			
-			if(consumerWorker.get(index)!=null && consumerWorker.compareAndSet(index, null, Thread.currentThread()))
+			if(consumerWorker.get(index)==null && consumerWorker.compareAndSet(index, null, Thread.currentThread()))
 			{
 				parked=true;
 				LockSupport.park(this);	
