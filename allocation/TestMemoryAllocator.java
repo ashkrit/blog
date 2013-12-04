@@ -16,14 +16,12 @@
 
 import java.util.concurrent.TimeUnit;
 
-import playground.memory.Allocator.Type;
-
 public class TestMemoryAllocator {
 
   public static void main(String...args)
 	{
 		int element = Integer.valueOf(args[1]);
-		ObjectType[] types = new ObjectType[]{ Allocator.allocate(Type.valueOf(args[0]), element)};
+		ObjectType[] types = new ObjectType[]{ Allocator.allocate(Allocator.Type.valueOf(args[0]), element)};
 		int ONE_MILLION = 1000000;
 		
 		for(int x = 0;x<50;x++)
