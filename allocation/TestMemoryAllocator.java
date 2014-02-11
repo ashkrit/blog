@@ -16,64 +16,72 @@
 
 import java.util.concurrent.TimeUnit;
 
-import playground.memory.Allocator.Type;
-
 public class TestMemoryAllocator {
 
   public static void main(String...args)
 	{
 		int element = Integer.valueOf(args[1]);
-		ObjectType[] types = new ObjectType[]{ Allocator.allocate(Type.valueOf(args[0]), element)};
+		final ObjectType[] types = new ObjectType[]{ Allocator.allocate(Allocator.Type.valueOf(args[0]), element)};
 		int ONE_MILLION = 1000000;
+
+		final int len = types.length;
 		
-		for(int x = 0;x<50;x++)
+		for(int x = 0; x < 100; x++)
 		{
-			for(ObjectType t : types)
+			for(int n = 0; n < len; n++)
 			{
+				final ObjectType t = types[n];
+
 				long writeStart = System.nanoTime();
-				write(t,element);
+				int resWrite = write(t,element);
 				long totalWrite = System.nanoTime() - writeStart;
 				
 				
 				long readStart = System.nanoTime();
-				read(t,element);
+				int resRead = read(t,element);
 				long totalRead = System.nanoTime() - readStart;
 				
-				double writeMs = totalWrite/1000000d;
-				double readMs = totalRead/1000000d;
+				double writeMs = totalWrite / 1000000d;
+				double readMs = totalRead / 1000000d;
 				
-				System.out.println(String.format("[%s] %s - [Write %s ms , Read %s ms ], Op/Sec(Millions)[ Write %s , Read %s ]",
+				System.out.println(String.format("[%2s] %s - [Write %16s ms , Read %16s ms ], Op/Sec(Millions)[ Write %6s , Read %6s ]: %16s %16s",
 						x,t.getClass().getName(), writeMs,readMs,
 						(TimeUnit.SECONDS.toNanos(element)/totalWrite)/ONE_MILLION,
-						(TimeUnit.SECONDS.toNanos(element)/totalRead)/ONE_MILLION));
+						(TimeUnit.SECONDS.toNanos(element)/totalRead)/ONE_MILLION,
+						resWrite,
+						resRead));
 			}		
 		}
 	}
 	
 	
-	public static void write(ObjectType t,int items)
+	public static int write(ObjectType t,int items)
 	{
-		for(int index=0;index<items;index++)
+		int index = 0;
+		for(; index < items; index++)
 		{
 			t.navigate(index);
 			t.setByte((byte)index);
 			t.setInt(index);
 			t.setLong(index * index);
 		}
+		return index;
 	}
 	
 	@SuppressWarnings("unused")
-	public static void read(ObjectType t,int items)
+	public static int read(ObjectType t,int items)
 	{
-		int intSum=0;
-		int longSum=0;
-		for(int index=0;index<items;index++)
+		int  byteSum  = 0;
+		int  intSum   = 0;
+		long longSum = 0l;
+
+		for(int index = 0; index < items; index++)
 		{
 			t.navigate(index);
-			t.getByte();
-			intSum+=t.getInt();
-			longSum+=t.getLong();
+			byteSum += t.getByte();
+			intSum  += t.getInt();
+			longSum += t.getLong();
 		}
-		
+		return byteSum + intSum + (int)longSum;
 	}
 }

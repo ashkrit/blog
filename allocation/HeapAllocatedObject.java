@@ -16,12 +16,14 @@
 
 public class HeapAllocatedObject implements ObjectType {
 
-  private HeapValue[] values;
-	private int index;
+        private HeapValue[] values;
+	private HeapValue cur;
+
+
 	public HeapAllocatedObject(int element)
 	{
 		values = new HeapValue[element];
-		for(int x=0;x<element;x++)
+		for(int x=0; x < element; x++)
 		{
 			values[x] = new HeapValue();
 		}
@@ -30,74 +32,46 @@ public class HeapAllocatedObject implements ObjectType {
 	
 	@Override
 	public void setInt(int value) {
-		values[index].setId(value);
+		cur.id = value;
 	}
 
 	@Override
 	public void setLong(long value) {
-		values[index].setLongValue(value);
+		cur.longValue = value;
 		
 	}
 
 	@Override
 	public void setByte(byte value) {
-		values[index].setType(value);
+		cur.type = value;
 		
 	}
 
 	@Override
 	public int getInt() {
-		return values[index].getId();
+		return cur.id;
 	}
 
 	@Override
 	public long getLong() {
-		return values[index].getLongValue();
+		return cur.longValue;
 	}
 
 	@Override
 	public byte getByte() {
-		return values[index].getType();
+		return cur.type;
 	}
 	
-	private static class HeapValue
+	static final class HeapValue
 	{
-		private int id;
-		private long longValue;
-		private byte type;
-		
-		public HeapValue() {
-		}
-		
-		public void setId(int id) {
-			this.id = id;
-		}
-		
-		public void setLongValue(long longValue) {
-			this.longValue = longValue;
-		}
-		
-		public void setType(byte type) {
-			this.type = type;
-		}
-		
-		public int getId() {
-			return id;
-		}
-		
-		public long getLongValue() {
-			return longValue;
-		}
-		
-		public byte getType() {
-			return type;
-		}
-		
+		int  id;
+		long longValue;
+		byte type;
 	}
 
 	@Override
 	public void navigate(int index) {
-		this.index = index;		
+		this.cur = values[index];
 	}
 
 }
