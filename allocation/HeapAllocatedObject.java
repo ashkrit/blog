@@ -14,10 +14,10 @@
  */
 
 
-public class HeapAllocatedObject implements ObjectType {
+public final class HeapAllocatedObject implements ObjectType {
 
-        private HeapValue[] values;
-	private HeapValue cur;
+        private final HeapValue[] values;
+	private HeapValue cur = null;
 
 
 	public HeapAllocatedObject(int element)
@@ -62,16 +62,16 @@ public class HeapAllocatedObject implements ObjectType {
 		return cur.type;
 	}
 	
-	static final class HeapValue
+	public static final class HeapValue
 	{
-		int  id;
-		long longValue;
-		byte type;
+		public int  id;
+		public long longValue;
+		public byte type;
 	}
 
 	@Override
 	public void navigate(int index) {
-		this.cur = values[index];
+	    cur = values[index];
 	}
 
 }
