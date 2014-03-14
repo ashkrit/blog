@@ -4,6 +4,7 @@ import java.security.AccessController;
 
 import sun.misc.Unsafe;
 
+//Taken from java.nio.Bits
 
 class UnsafeUtils {
 
@@ -17,7 +18,7 @@ class UnsafeUtils {
 		}
 	}   
 	
-	//Take from java.nio.Bits
+
     static boolean nativeByteOrder  =(byteOrder() == ByteOrder.BIG_ENDIAN);
     public static boolean unaligned;
 	public static boolean unalignedKnown = false;
