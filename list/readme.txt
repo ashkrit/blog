@@ -1,4 +1,5 @@
-Code for blog - 
+Code for blog - http://ashkrit.blogspot.com/2014/08/compact-string-list.html
+
 
 How to run MemoryTest
 
