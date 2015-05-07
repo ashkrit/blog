@@ -1,4 +1,4 @@
-Code for blog -
+Code for blog - http://ashkrit.blogspot.com/2015/05/experiment-with-string-split.html
 
 -Without GC logs
 java split.StringSplitTestApp
