@@ -1,0 +1,1 @@
+code for blog - http://ashkrit.blogspot.sg/2015/10/lazy-array-initialization.html
