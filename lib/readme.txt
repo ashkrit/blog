@@ -1,0 +1,3 @@
+Copy dll/lib in %javahome%\jre\bin\server folder
+
+java -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly ...
