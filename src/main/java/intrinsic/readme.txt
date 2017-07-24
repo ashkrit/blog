@@ -1,0 +1,1 @@
+Code for blog - http://ashkrit.blogspot.com/2017/07/java-intrinsic-magic.html
