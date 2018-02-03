@@ -1,1 +1,1 @@
-Sample files for blog - ashkrit.blogspot.com
+Sample files for blog -http://ashkrit.blogspot.com
