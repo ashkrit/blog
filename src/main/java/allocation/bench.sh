@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #Link to Blog - http://ashkrit.blogspot.sg/2013/07/which-memory-is-faster-heap-or.html
 
 source ~/test-jdk8.sh 
