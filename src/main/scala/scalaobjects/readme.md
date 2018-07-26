@@ -1,5 +1,5 @@
 
-Blog : 
+Blog : http://ashkrit.blogspot.com/2018/07/scala-tuple-performance.html
 
 How to test Memory allocation
 
