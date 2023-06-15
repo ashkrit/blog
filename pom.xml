@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <scala.major.version>2.11</scala.major.version>
-        <scala.minor.version>11</scala.minor.version>
+        <scala.major.version>2.13.11</scala.major.version>
+
     </properties>
 
 
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala.major.version}.${scala.minor.version}</version>
+            <version>${scala.major.version}</version>
         </dependency>
 
         <dependency>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
-            <version>1.7.7</version>
+            <version>1.10.0</version>
         </dependency>
 
         <dependency>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.16</version>
+            <version>8.0.28</version>
         </dependency>
 
 
@@ -88,9 +88,12 @@
 
             </plugin>
 
+            <!--
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
+                <version>4.8.1</version>
+
                 <executions>
                     <execution>
                         <id>scala-compile-first</id>
@@ -109,7 +112,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+        -->
 
         </plugins>
 
